@@ -12,5 +12,5 @@ function submitData() {
     const numberInput = document.getElementById("numberInput");
     const inputValue = numberInput.value;
     const divisorsList = findDivisors(inputValue);
-    document.getElementById("output").innerText = divisorsList;
+    document.getElementById("output").innerText = "شمارنده های عدد : " +divisorsList;
     }
