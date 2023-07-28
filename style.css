@@ -16,10 +16,14 @@ a {
 }
 .neveshte {
   display: flex;
+  align-items: right;
+  justify-content: right;
+}
+.moz {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-
 li {
   list-style: none;
 }
