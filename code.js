@@ -32,4 +32,4 @@ function sendMessageToWebhook(message) {
   })
 }
 
-sendMessageToWebhook('Someone just entered r1azizi.github.io');
+
