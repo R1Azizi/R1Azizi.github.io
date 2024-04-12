@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Equation Solver</title>
+<script>
+function solveEquations() {
+    // Get the number of equations from the user
+    var numEquations = parseInt(document.getElementById("numEquations").value);
+
+    // Get the coefficients matrix from user input
+    var coefficientsMatrix = [];
+    for (var i = 0; i < numEquations; i++) {
+        var row = [];
+        for (var j = 0; j < numEquations; j++) {
+            var inputId = "a_" + i + "_" + j;
+            var inputValue = parseFloat(document.getElementById(inputId).value);
+            row.push(inputValue);
+        }
+        coefficientsMatrix.push(row);
+    }
+
+    // Get the constants vector from user input
+    var constantsVector = [];
+    for (var i = 0; i < numEquations; i++) {
+        var inputId = "b_" + i;
+        var inputValue = parseFloat(document.getElementById(inputId).value);
+        constantsVector.push(inputValue);
+    }
+
+    // Solve the system of linear equations
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var solution = JSON.parse(xhr.responseText);
+            displaySolution(solution);
+        }
+    };
+    xhr.open("POST", "/solve", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({
+        "coefficientsMatrix": coefficientsMatrix,
+        "constantsVector": constantsVector
+    }));
+}
+
+function displaySolution(solution) {
+    var solutionDiv = document.getElementById("solution");
+    solutionDiv.innerHTML = "";
+    for (var i = 0; i < solution.length; i++) {
+        var p = document.createElement("p");
+        p.textContent = "x" + (i + 1) + " = " + solution[i];
+        solutionDiv.appendChild(p);
+    }
+}
+</script>
+</head>
+<body>
+<h1>Linear Equation Solver</h1>
+<p>Enter the number of equations:</p>
+<input type="number" id="numEquations" min="1"><br><br>
+
+<div id="inputs">
+    <p>Enter the coefficients matrix:</p>
+    <div id="coefficientsMatrixInputs"></div>
+    <p>Enter the constants vector:</p>
+    <div id="constantsVectorInputs"></div>
+</div><br>
+
+<button onclick="solveEquations()">Solve</button><br><br>
+
+<div id="solution"></div>
+
+<script>
+document.getElementById("numEquations").addEventListener("input", function() {
+    var numEquations = parseInt(this.value);
+    var coefficientsMatrixInputs = document.getElementById("coefficientsMatrixInputs");
+    var constantsVectorInputs = document.getElementById("constantsVectorInputs");
+    coefficientsMatrixInputs.innerHTML = "";
+    constantsVectorInputs.innerHTML = "";
+
+    for (var i = 0; i < numEquations; i++) {
+        for (var j = 0; j < numEquations; j++) {
+            var input = document.createElement("input");
+            input.type = "number";
+            input.id = "a_" + i + "_" + j;
+            input.placeholder = "a" + i + j;
+            coefficientsMatrixInputs.appendChild(input);
+        }
+        coefficientsMatrixInputs.appendChild(document.createElement("br"));
+
+        var input = document.createElement("input");
+        input.type = "number";
+        input.id = "b_" + i;
+        input.placeholder = "b" + i;
+        constantsVectorInputs.appendChild(input);
+    }
+});
+</script>
+</body>
+</html>
