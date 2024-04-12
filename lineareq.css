@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00CCCC;
+    background-image: radial-gradient(circle, #00CCCC 10%, #004C4C 90%);
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    padding: 20px;
+    background-color: #1F1F1F;
+    border-radius: 10px;
+    border: 2px solid #00CCCC;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h1, h2 {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.input-fields {
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #00CCCC;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #1F1F1F;
+    outline: none;
+}
+
+input[type="number"]::placeholder {
+    color: #CCCCCC;
+}
+
+input[type="number"]:focus {
+    border-color: #00FFFF;
+}
+
+/* Bubbles Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Individual bubble styling */
+.bubble:nth-child(1) {
+    top: 10%;
+    left: 15%;
+}
+
+.bubble:nth-child(2) {
+    top: 20%;
+    left: 70%;
+}
+
+.bubble:nth-child(3) {
+    top: 40%;
+    left: 40%;
+}
+
+.bubble:nth-child(4) {
+    top: 60%;
+    left: 80%;
+}
+
+.bubble:nth-child(5) {
+    top: 80%;
+    left: 25%;
+}
+
+#coordinates {
+    color: white;
+}
+
+.coordinate {
+    font-weight: bold;
+}
