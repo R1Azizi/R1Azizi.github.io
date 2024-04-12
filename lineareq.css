@@ -55,7 +55,6 @@ input[type="number"]:focus {
     border-color: #00FFFF;
 }
 
-/* Bubbles Animation */
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -77,7 +76,6 @@ input[type="number"]:focus {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Individual bubble styling */
 .bubble:nth-child(1) {
     top: 10%;
     left: 15%;
