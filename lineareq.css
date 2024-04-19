@@ -108,3 +108,39 @@ input[type="number"]:focus {
 .coordinate {
     font-weight: bold;
 }
+
+input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #00CCCC;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #1F1F1F;
+    outline: none;
+}
+
+/* Additional styles for radio buttons */
+.input-fields input[type="radio"] {
+    display: none;
+}
+
+.input-fields label {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 2px solid #00CCCC;
+    border-radius: 5px;
+    font-size: 24px; /* Increased font size */
+    text-align: center;
+    line-height: 100px;
+    color: #FFFFFF;
+    background-color: #1F1F1F;
+    cursor: pointer;
+}
+
+.input-fields input[type="radio"]:checked + label {
+    background-color: #00CCCC;
+}
