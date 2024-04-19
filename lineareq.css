@@ -121,7 +121,7 @@ input[type="number"] {
     outline: none;
 }
 
-/* Additional styles for radio buttons */
+
 .input-fields input[type="radio"] {
     display: none;
 }
@@ -133,7 +133,7 @@ input[type="number"] {
     margin: 10px;
     border: 2px solid #00CCCC;
     border-radius: 5px;
-    font-size: 24px; /* Increased font size */
+    font-size: 24px; 
     text-align: center;
     line-height: 100px;
     color: #FFFFFF;

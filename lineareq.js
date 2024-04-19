@@ -16,7 +16,7 @@ function updateEquation() {
         
         const xCoordinate1 = 0;
         const yCoordinate1 = b;
-        const xCoordinate2 = (b === 0) ? 0 : -b/a; // Solve for x when y = 0
+        const xCoordinate2 = (b === 0) ? 0 : -b/a; 
 
         coordinatesText.innerHTML = `[ x: ${xCoordinate1}, y: ${yCoordinate1} ] : طول از مبدا <br>[ x: ${xCoordinate2}, y: 0 ] : عرض از مبدا `;
 
@@ -28,7 +28,7 @@ function updateEquation() {
     if (!isNaN(y) && radioY.checked) {
         equationText.textContent = equationText.textContent.replace(/y/g, y);
         
-        // Solve for x when y is given
+        
         const x = (!isNaN(a) && a !== 0) ? (y - b) / a : "Undefined";
         coordinatesText.innerHTML += `<br>x = ${x}`;
     }
