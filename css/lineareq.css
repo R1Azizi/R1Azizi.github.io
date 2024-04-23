@@ -1,14 +1,42 @@
 body {
     margin: 0;
     height: 100vh;
-    display: flex;
-    justify-content: center;
     align-items: center;
     background-color: #00CCCC;
     background-image: radial-gradient(circle, #00CCCC 10%, #004C4C 90%);
     overflow: hidden;
 }
 
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Pushes the navigation links to the left edge */
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0; /* Remove margin for the last navigation link */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+}
+  
 .container {
     position: relative;
     padding: 20px;
@@ -144,3 +172,16 @@ input[type="number"] {
 .input-fields input[type="radio"]:checked + label {
     background-color: #00CCCC;
 }
+
+ @media(max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+    }
+  
+    .nav-links li {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }

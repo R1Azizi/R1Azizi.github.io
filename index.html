@@ -3,53 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Arvan Azizi</title>
+  <title>Math Tools</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <nav class="navbar">
-    <!-- LOGO -->
-    <div class="logo">Arvan Azizi</div>
-
-    <!-- NAVIGATION MENU -->
+    <div class="logo">Math Tools</div>
     <ul class="nav-links">
-      <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-      <!-- NAVIGATION MENUS -->
-      <div class="menu">
-
-        <li><a href="./index.html">خانه</a></li>
-
-        <li class="services">
-          <a href="#">امکانات</a>
-
-          <ul class="dropdown">
-            <li><a href="./divisorPage.html">شمارنده یاب</a></li>
-            <li><a href="./lineareq.html">معادلات خطی</a></li>
-          </ul>
-
-        </li>
-
-        <li><a href="#">ارتباط با من</a></li>
-      </div>
+      <li><a href="#">Home</a></li>
+      <li><a href="./about.html">About</a></li>
     </ul>
   </nav>
-  <div>
-    <h1 class="neveshte">صفحه اصلی</h1><br><br><br>
-    <h3 class="neveshte">تقریبا از پایه هشتم به بعد با مفهومی مثل اعداد اول ، شمارنده ها و ک.م.م و ب.م.م آشنا میشید ، میتونید با استفاده از باکس پایین مقسوم علیه های هر عددی رو که میخواین رو بدست بیارید</h3>
+  <div class="container">
+    <a href="lineareq.html" class="box" id="box1">Linear</a>
+    <a href="uchome.html" class="box" id="box2">UCMAS</a>
+    <a href="divisorPage.html" class="box" id="box3">Divisors</a>
   </div>
-  <div class="box-container">
-    <div class="box">
-      <div class="input-section">
-        <h2 class="neveshte">شمارنده یاب</h2><br>
-        <input type="number" id="numberInput" placeholder="Enter a number">
-      </div>
-      <div class="output-section" id="output">
-      </div><br>
-      <button class="submit-button" onclick="submitData()">Submit</button>
-      <h3>:)</h3>
-    </div>
-  </div>
-  <script src="code.js"></script>
 </body>
 </html>

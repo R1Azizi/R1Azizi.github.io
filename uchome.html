@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCMAS Practice Sheet Generator</title>
+    <link rel="stylesheet" href="css/ucstyles.css">
+    <nav class="navbar">
+        <div class="logo">Math Tools</div>
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+    </nav>
+</head>
+<body>
+    <div id="moz">
+        <h1>UCMAS Practice Sheet Generator</h1>
+    </div>
+    <main>
+        <form id="practice-form">
+            <div class="form-group">
+                <label for="practice-type">Practice Type:</label>
+                <select id="practice-type">
+                    <option value="addition">Addition/Subtraction</option>
+                    <option value="multiplication">Multiplication</option>
+                    <option value="division">Division</option>
+                </select>
+            </div>
+            <div class="form-group" id="num-digits-group">
+                <label for="num-digits">Number of Digits:</label>
+                <input type="number" id="num-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="num-rows-group">
+                <label for="num-rows">Number of Rows:</label>
+                <input type="number" id="num-rows" value="10" min="1">
+            </div>
+            <div class="form-group" id="multi-digits-group" style="display: none;">
+                <label for="multi-digits">Multiplicand Digits:</label>
+                <input type="number" id="multi-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="multiplier-digits-group" style="display: none;">
+                <label for="multiplier-digits">Multiplier Digits:</label>
+                <input type="number" id="multiplier-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="dividend-digits-group" style="display: none;">
+                <label for="dividend-digits">Dividend Digits:</label>
+                <input type="number" id="dividend-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="divisor-digits-group" style="display: none;">
+                <label for="divisor-digits">Divisor Digits:</label>
+                <input type="number" id="divisor-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="problem-amount-group">
+                <label for="problem-amount">Problem Amount:</label>
+                <input type="number" id="problem-amount" value="10" min="1">
+            </div>
+            <button type="submit">Generate Practice Sheet</button>
+        </form>
+        <div id="practice-sheet"></div>
+    </main>
+    <script src="js/ucscript.js"></script>
+</body>
+</html>
