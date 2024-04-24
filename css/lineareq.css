@@ -173,15 +173,26 @@ input[type="number"] {
     background-color: #00CCCC;
 }
 
- @media(max-width: 768px) {
+@media(max-width: 768px) {
     .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px; /* Increased padding */
     }
-  
+
+    .nav-links {
+        margin-left: 0; /* Remove margin for the navigation links */
+    }
+
     .nav-links li {
-      display: block;
-      margin-bottom: 10px;
+        margin-bottom: 10px; /* Adjust spacing between navigation links */
     }
-  }
+
+    .nav-links li a {
+        font-size: 18px; /* Adjust font size for better readability */
+    }
+
+    body {
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+}
