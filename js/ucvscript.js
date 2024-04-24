@@ -32,20 +32,26 @@ document.getElementById('start-button').addEventListener('click', function(event
 
     // Change the background color of the page to white
     document.body.style.backgroundColor = 'white';
-    
+
+    // Show the footer
+    document.getElementById('footer').style.display = 'block';
 
     startCountdown(3000, function() {
         // Callback function executed after countdown ends
         startQ(); // Start the Q after countdown ends
     });
-    
-    
+});
 
-    
+document.getElementById('stop-button').addEventListener('click', function(event) {
+    // Prevent the default button click behavior
+    event.preventDefault();
+
+    // Reload the page to reset to initial state
+    location.reload();
 });
 
 var twoDigitNumbers = [];
-var oneDigitNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var oneDigitNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var threeDigitNumbers = [];
 
 for (var i = 100; i <= 999; i++) {
@@ -59,9 +65,23 @@ for (var i = 10; i <= 99; i++) {
 }
 
 function giveNumber() {
-    var randomIndex = Math.floor(Math.random() * twoDigitNumbers.length);
-    var randomNumber = twoDigitNumbers[randomIndex];
-    var result = randomNumber * updateRandomSign();
+    
+    if (numDigits() == 2){
+        var randomIndex = Math.floor(Math.random() * twoDigitNumbers.length);
+        var randomNumber = twoDigitNumbers[randomIndex];
+        var result = randomNumber * updateRandomSign();
+    }
+    if (numDigits() == 3){
+        var randomIndex = Math.floor(Math.random() * threeDigitNumbers.length);
+        var randomNumber = threeDigitNumbers[randomIndex];
+        var result = randomNumber * updateRandomSign();
+    }
+    if (numDigits() == 1){
+        var randomIndex = Math.floor(Math.random() * oneDigitNumbers.length);
+        var randomNumber = oneDigitNumbers[randomIndex];
+        var result = randomNumber * updateRandomSign();
+    }
+    
 
     return result;
 }
@@ -75,7 +95,7 @@ function updateRandomSign() {
 
     // If the random number is less than or equal to 0.25, set the sign to -1,
     // otherwise set it to 1
-    if (randomNum <= 0.25) {
+    if (randomNum <= 0.15) {
         return -1;
     } else {
         return 1;
@@ -117,26 +137,77 @@ function startCountdown(duration, callback) {
     }, 1); // Update every millisecond
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 function startQ() {
+    document.getElementById('number-container').style.display = 'block';
+
+    // Set the delay time based on the selected level
     if (level() == 'easy') {
-        delaytime = 1700
+        delaytime = 1700;
+    } else if (level() == 'normal') {
+        delaytime = 1000;
+    } else if (level() == 'hard') {
+        delaytime = 600;
+    } else if (level() == 'expert') {
+        delaytime = 450;
     }
 
-    if (level() == 'normal') {
-        delaytime = 1000
-    }
-    
-    if (level() == 'hard') {
-        delaytime = 600
+    var numIterations = numRows();
+    var count = 0;
+    var sum = 0;
+    var prcount = 0;
+
+    // Function to display the next problem
+    function displayNextProblem() {
+        if (prcount < problemAmount()) {
+            // Display the numbers for the current problem
+            displayNextNumber();
+        }
     }
 
-    if (level() == 'expert') {
-        delaytime = 450
+    // Function to display the next number for the current problem
+    function displayNextNumber() {
+        if (count < numIterations) {
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('number-container').style.display = 'block';
+            var number = giveNumber();
+            document.getElementById("number-container").textContent = number;
+            sum += number; // Accumulate the sum
+            count++;
+            setTimeout(displayNextNumber, delaytime);
+        } else {
+            // Hide the number container and show the timer
+            document.getElementById('number-container').style.display = 'none';
+            document.getElementById('timer').style.display = 'block';
+
+            // Start the countdown for 3 seconds
+            startCountdown(3000, function() {
+                // Hide the timer and show the sum
+                document.getElementById('timer').style.display = 'none';
+                document.getElementById('number-container').style.display = 'block';
+                document.getElementById('number-container').textContent = sum;
+
+                sleep(2000).then(() => {
+                    document.getElementById('number-container').style.display = 'none';
+                    document.getElementById('timer').style.display = 'block';
+                });
+
+                startCountdown(3000, function() {
+                    prcount++;
+                    sum = 0; // Reset the sum for the next problem
+                    count = 0; // Reset the count for the next problem
+                    displayNextProblem();
+                    });
+            });
+        }
     }
-    for (var i = 0; i < numRows(); i++) {
-        setTimeout(function(){
-            // Change the text content inside the timeout function
-            document.getElementById("number-container").textContent = giveNumber();
-        }, i * delaytime);
-    }
+
+    // Start displaying problems
+    displayNextProblem();
 }
+
+
+

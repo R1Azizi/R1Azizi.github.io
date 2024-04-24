@@ -84,7 +84,7 @@ body {
   #number-container {
     text-align: center; /* Center the text horizontally */
     font-weight: bold; /* Make the text bold */
-    font-size: 400px; /* Set the font size to a large size */
+    font-size: 330px; /* Set the font size to a large size */
 }
   #timer {
     text-align: center;
@@ -92,7 +92,17 @@ body {
     font-size: 100px;
   }
 
-
+footer {
+    position: fixed;
+    bottom: 20px; /* Adjust this value as needed */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000; /* Ensure the footer is above other content */
+    background-color: #f0f0f0; /* Example background color */
+    padding: 10px 0; /* Example padding */
+    font-weight: bold;
+}
   
   @media(max-width: 768px) {
     .navbar {
