@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Pushes the navigation links to the left edge */
+  }
+  
+  .nav-links li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .nav-links li:last-child {
+    margin-right: 0; /* Remove margin for the last navigation link */
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  #moz {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #practice-sheet {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  #number-container {
+    text-align: center; /* Center the text horizontally */
+    font-weight: bold; /* Make the text bold */
+    font-size: 400px; /* Set the font size to a large size */
+}
+  #timer {
+    text-align: center;
+    font-weight: bold;
+    font-size: 100px;
+  }
+
+
+  
+  @media(max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px; /* Increased padding */
+    }
+
+    .nav-links {
+        margin-left: 0; /* Remove margin for the navigation links */
+    }
+
+    .nav-links li {
+        margin-bottom: 10px; /* Adjust spacing between navigation links */
+    }
+
+    .nav-links li a {
+        font-size: 18px; /* Adjust font size for better readability */
+    }
+    #number-container {
+        font-size: 250px; /* Adjust font size for smaller screens */
+    }
+
+    body {
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+}

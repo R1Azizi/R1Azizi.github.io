@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCMAS Practice Sheet Generator</title>
+    <link rel="stylesheet" href="css/ucvstyles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Math Tools</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="moz">
+        <h1>UCMAS Practice View Test</h1>
+    </div>
+    <main>
+        <div id="timer"></div>
+        <div id="number-container"></div>
+        <form id="practice-form">
+            <div class="form-group">
+                <label for="practice-type">Practice Type:</label>
+                <select id="practice-type">
+                    <option value="addition">Addition/Subtraction</option>
+                </select>
+            </div>
+            <div class="form-group" id="num-digits-group">
+                <label for="num-digits">Number of Digits:</label>
+                <input type="number" id="num-digits" value="2" min="1">
+            </div>
+            <div class="form-group" id="num-rows-group">
+                <label for="num-rows">Number of Rows:</label>
+                <input type="number" id="num-rows" value="10" min="1">
+            </div>
+            <div class="form-group" id="problem-amount-group">
+                <label for="problem-amount">Problem Amount:</label>
+                <input type="number" id="problem-amount" value="10" min="1">
+            </div>
+            <div class="form-group" id="level-group">
+                <label for="level-select">Time & Level:</label>
+                <select id="level-select">
+                    <option value="easy">Easy</option>
+                    <option value="normal">Normal</option>
+                    <option value="hard">Hard</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+            <button type="submit" id="start-button">Start</button>
+        </form>
+        <div id="practice-sheet"></div>
+    </main>
+    <script src="js/ucvscript.js"></script>
+</body>
+</html>
