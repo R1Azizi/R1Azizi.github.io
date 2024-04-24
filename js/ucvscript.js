@@ -2,23 +2,23 @@
 var apracticeType = document.getElementById('practice-type');
 var delaytime;
 
+function PracticeType() {
+    return document.getElementById('practice-type').value;
+}
+
 function numDigits() {
-    // Get the selected value and update numDigits
     return parseInt(document.getElementById('num-digits').value);
 }
 
 function numRows() {
-    // Get the selected value and update numDigits
     return parseInt(document.getElementById('num-rows').value);
 }
 
 function problemAmount() {
-    // Get the selected value and update numDigits
     return parseInt(document.getElementById('problem-amount').value);
 }
 
 function level() {
-    // Get the selected value and update numDigits
     return document.getElementById('level-select').value;
 }
 
@@ -63,9 +63,7 @@ for (var i = 10; i <= 99; i++) {
     // Push each number to the array
     twoDigitNumbers.push(i);
 }
-
-function giveNumber() {
-    
+function generateRandomNumber() {
     if (numDigits() == 2){
         var randomIndex = Math.floor(Math.random() * twoDigitNumbers.length);
         var randomNumber = twoDigitNumbers[randomIndex];
@@ -81,9 +79,19 @@ function giveNumber() {
         var randomNumber = oneDigitNumbers[randomIndex];
         var result = randomNumber * updateRandomSign();
     }
-    
+    return result
+}
 
-    return result;
+var previousNumber = null;
+
+function giveNumber() {
+    
+    var randomNumber;
+    do {
+        randomNumber = generateRandomNumber();
+    } while (randomNumber === previousNumber); // Check if the new number is the same as the previous one
+    previousNumber = randomNumber; // Update the previous number
+    return randomNumber;
 }
 
 var randomSign;
@@ -95,7 +103,7 @@ function updateRandomSign() {
 
     // If the random number is less than or equal to 0.25, set the sign to -1,
     // otherwise set it to 1
-    if (randomNum <= 0.15) {
+    if ((randomNum <= 0.15 ) && PracticeType() == 'add-sub') {
         return -1;
     } else {
         return 1;
@@ -141,7 +149,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-function startQ() {
+  function startQ() {
     document.getElementById('number-container').style.display = 'block';
 
     // Set the delay time based on the selected level
@@ -165,6 +173,9 @@ function startQ() {
         if (prcount < problemAmount()) {
             // Display the numbers for the current problem
             displayNextNumber();
+        }
+        else {
+            location.reload();
         }
     }
 
@@ -190,17 +201,19 @@ function startQ() {
                 document.getElementById('number-container').style.display = 'block';
                 document.getElementById('number-container').textContent = sum;
 
+                // Wait for 3 seconds before moving to the next problem
                 sleep(2000).then(() => {
                     document.getElementById('number-container').style.display = 'none';
                     document.getElementById('timer').style.display = 'block';
-                });
 
-                startCountdown(3000, function() {
-                    prcount++;
-                    sum = 0; // Reset the sum for the next problem
-                    count = 0; // Reset the count for the next problem
-                    displayNextProblem();
+                    // Start countdown for 3 seconds before starting the next problem
+                    startCountdown(2000, function() {
+                        prcount++;
+                        sum = 0; // Reset the sum for the next problem
+                        count = 0; // Reset the count for the next problem
+                        displayNextProblem();
                     });
+                });
             });
         }
     }
